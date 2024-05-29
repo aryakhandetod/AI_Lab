@@ -26,3 +26,6 @@ PositiveCount is PosCountRest, NegativeCount is NegCountRest).
 sentiment(Sentence, Sentiment) :- 
 analyze_sentence(Sentence, PositiveCount, NegativeCount), 
 (PositiveCount > NegativeCount -> Sentiment = positive; Sentiment = negative).
+
+Command
+?- sentiment([happy, satisfied], Sentiment).
