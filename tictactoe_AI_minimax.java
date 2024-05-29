@@ -1,6 +1,6 @@
 import java.util.Scanner; 
  
-public class AI_tictactoe { 
+public class TICTACTOE_NON_AI { 
     private static final char PLAYER_X = 'X'; 
     private static final char PLAYER_O = 'O'; 
     private static final char EMPTY = ' '; 
