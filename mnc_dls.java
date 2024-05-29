@@ -80,7 +80,8 @@ crosses right to left.
  return successors;
  }
  private void testAndAdd(List<State> successors, State newState) {
-     newState.setParentState(this);
+ if (newState.isValid()) {
+ newState.setParentState(this);
  successors.add(newState);
  }
  }
@@ -142,22 +143,7 @@ crosses right to left.
  return false;
  }
  State s = (State) obj;
- return (s.cannibalLeft == cannibalLeft && s.missionaryLeft ==
-missionaryLeft
- && s.boat == boat && s.cannibalRight == cannibalRight
- && s.missionaryRight == missionaryRight);
- }
-}
-class DepthLimitedSearch {
- public State exec(State initialState) {
- int limit = 20;
- return recursiveDLS(initialState, limit);
- }
- private State recursiveDLS(State state, int limit) {
- if (state.isGoal()) {
- return state;
- } else if (limit == 0
-            return null;
+  return null;
  } else {
  List<State> successors = state.generateSuccessors();
  for (State child : successors) {
@@ -202,7 +188,22 @@ public class depthlimit {
  System.out.print(state.toString() + " -> ");
  }
  }
-System.out.println("\nDepth: " + depth);
- } 
+ System.out.println("\nDepth: " + depth);
+ }
+ }
+} 
+ return (s.cannibalLeft == cannibalLeft && s.missionaryLeft ==
+missionaryLeft
+ && s.boat == boat && s.cannibalRight == cannibalRight
+ && s.missionaryRight == missionaryRight);
  }
 }
+class DepthLimitedSearch {
+ public State exec(State initialState) {
+ int limit = 20;
+ return recursiveDLS(initialState, limit);
+ }
+ private State recursiveDLS(State state, int limit) {
+ if (state.isGoal()) {
+ return state;
+ } else if (limit == 0) {
